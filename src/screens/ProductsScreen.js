@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View,Image,FlatList} from 'react-native';
-import products  from '../src/data/products';
+import products  from '../data/products.js';
 
 
 const ProductsScreen = () => {
@@ -8,7 +8,7 @@ const ProductsScreen = () => {
           data={products}
           renderItem={({item}) => (
             <View style={styles.itemContainer}>
-            <Image source={{ uri: item.image}} style={styles.image}/>
+              <Image source={{ uri: item.image}} style={styles.image}/>
             </View>
             )}
             numColumns={2}

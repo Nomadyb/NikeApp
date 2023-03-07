@@ -1,15 +1,19 @@
-import { StyleSheet, Text, View,Image,FlatList} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, View,Image,FlatList , Pressable} from 'react-native';
 import products  from '../data/products.js';
 
 
-const ProductsScreen = () => {
+const ProductsScreen = ({navigation}) => {
+
+  {/*const navigation = useNavigation();*/}
+  
     return (
           <FlatList
           data={products}
           renderItem={({item}) => (
-            <View style={styles.itemContainer}>
+            <Pressable  onPress={() => navigation.navigate("Product Details")} style={styles.itemContainer}>
               <Image source={{ uri: item.image}} style={styles.image}/>
-            </View>
+            </Pressable>
             )}
             numColumns={2}
           />
@@ -27,11 +31,15 @@ const styles = StyleSheet.create({
     itemContainer:{
       width:"50%",
       padding:2,
+      
     },
     image: {
       width: "100%",
       aspectRatio:1,
-    }
+    },
+
+  
+
   });
   
   export default ProductsScreen;
